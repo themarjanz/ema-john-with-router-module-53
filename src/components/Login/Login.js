@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
@@ -16,6 +16,9 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const navigate = useNavigate();
+    // authentication page
+    const location = useLocation();
+    const from = location.state?.pathname || '/';
 
     const handleEmailBlur = (event) => {
         setEmail(event.target.value);
@@ -24,7 +27,8 @@ const Login = () => {
         setPassword(event.target.value);
     }
     if (user) {
-        navigate('/shop');
+        // navigate('/shop');
+        navigate(from, { replace: true });
     }
     const handleUserSignIn = event => {
         event.preventDefault();
