@@ -9,9 +9,8 @@ const useCart = () => {
         const savedCart = [];
         const keys = Object.keys(storedCart)
 
-        fetch('https://ancient-island-81558.herokuapp.com/productByKeys', {
-            // https://ancient-island-81558.herokuapp.com/ change by 
-            // https://ancient-island-81558.herokuapp.com/
+        fetch('http://localhost:5000/productByKeys', {
+
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
